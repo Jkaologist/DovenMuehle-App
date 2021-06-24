@@ -67,6 +67,7 @@ function handleResult({ changes, failures }) {
  */
 function feedbackToUser(info) {
   return result => {
+    // eslint-disable-next-line no-console
     console.info(chalk.blue(info));
     return result;
   };
@@ -79,6 +80,7 @@ function feedbackToUser(info) {
  */
 function reportSuccess(message) {
   return result => {
+    // eslint-disable-next-line no-console
     addCheckmark(() => console.log(chalk.green(` ${message}`)));
     return result;
   };
@@ -91,6 +93,7 @@ function reportSuccess(message) {
  */
 function reportErrors(reason) {
   // TODO Replace with our own helpers/log that is guaranteed to be blocking?
+  // eslint-disable-next-line no-console
   xmark(() => console.error(chalk.red(` ${reason}`)));
   process.exit(1);
 }
@@ -373,6 +376,7 @@ async function generateLanguage(language) {
 /**
  * Run
  */
+// eslint-disable-next-line func-names
 (async function () {
   await generateComponents([
     { kind: 'component', name: 'Component', memo: false },
