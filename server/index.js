@@ -14,8 +14,15 @@ const ngrok =
 const { resolve } = require('path');
 const app = express();
 
-// If you need a backend, e.g. an API, add your custom backend-specific middleware here
-// app.use('/api', myApi);
+// ToDo: backend get req to array of strings
+app.get('/store', (req, res, next) => {
+  next();
+});
+
+// ToDo: backend post to change the array of strings
+app.post('/store', (req, res, next) => {
+  next();
+});
 
 // In production we need to pass these values in instead of relying on webpack
 setup(app, {
