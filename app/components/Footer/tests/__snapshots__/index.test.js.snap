@@ -6,7 +6,7 @@ exports[`<Footer /> should render and match the snapshot 1`] = `
 >
   <section>
     <span>
-      This project is licensed under the MIT license.
+      Welcome to the Epic Strings project.
     </span>
   </section>
   <section>
@@ -34,12 +34,12 @@ exports[`<Footer /> should render and match the snapshot 1`] = `
   <section>
     <span>
       
-      Made with love by 
+      Made by 
       <a
         className="A-br8h0y-0 dwVNvo"
-        href="https://twitter.com/mxstbr"
+        href="https://jkaologist.github.io/PersonalWebsite/"
       >
-        Max Stoiber
+        Jon Kao
       </a>
       .
     

@@ -10,12 +10,12 @@ export const scope = 'boilerplate.components.Footer';
 export default defineMessages({
   licenseMessage: {
     id: `${scope}.license.message`,
-    defaultMessage: 'Welcome to the epic strings project.',
+    defaultMessage: 'Welcome to the Epic Strings project.',
   },
   authorMessage: {
     id: `${scope}.author.message`,
     defaultMessage: `
-      Epic Strings by {author}.
+      Made by {author}.
     `,
   },
 });
