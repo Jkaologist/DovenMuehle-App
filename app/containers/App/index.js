@@ -43,7 +43,7 @@ export default function App() {
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route exact path="/display" component={DisplayPage} />
-        <Route exact path="/form" component={StringForm} />
+        <Route exact path="/display/new" component={StringForm} />
         <Route path="/features" component={FeaturePage} />
         <Route path="" component={NotFoundPage} />
       </Switch>
