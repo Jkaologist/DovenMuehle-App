@@ -37,14 +37,14 @@ app.get('*.js', (req, res, next) => {
 });
 
 // ToDo: backend get to array of strings
-app.get('/store', (req, res, next) => {
+app.get('/', (req, res, next) => {
   // Check out response objects for this line of code!
   res.store = arrOfString;
   next();
 });
 
 // ToDo: backend post to change the array of strings
-app.post('/store', (req, res, next) => {
+app.post('/', (req, res, next) => {
   // Check out req and res objects for these two lines below!
   arrOfString.push(req.body);
   res.store = arrOfString;
