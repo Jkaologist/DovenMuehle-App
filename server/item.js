@@ -1,8 +1,7 @@
 /** Keep track of strings in DB cart. */
 
-// If finder is used uncomment the following line of code.
-// import { NotFoundError } from './middlewares/expressErrorMiddleware';
-const db = require('./database').default;
+const { NotFoundError } = require('./middlewares/expressErrorMiddleware');
+const db = require('./database');
 
 class Item {
   constructor(name) {
@@ -43,14 +42,14 @@ class Item {
   //   return foundItem;
   // }
 
-  // /** Remove item with matching id. */
+  /** Remove item with matching id. */
 
-  // static remove(name) {
-  //   const foundIdx = items.findIndex(v => v.name === name);
-  //   if (foundIdx === -1) throw new NotFoundError();
+  static remove(name) {
+    const foundIdx = db.items.findIndex(v => v.name === name);
+    if (foundIdx === -1) throw new NotFoundError();
 
-  //   items.splice(foundIdx, 1);
-  // }
+    db.items.splice(foundIdx, 1);
+  }
 }
 
 module.exports = Item;

@@ -2,7 +2,7 @@
 
 const express = require('express');
 const logger = require('./logger');
-const displayRoutes = require('./displayRoutes');
+const itemsRoutes = require('./routes/items');
 const argv = require('./argv');
 const port = require('./port');
 const setup = require('./middlewares/frontendMiddleware');
@@ -13,9 +13,10 @@ const ngrok =
     : false;
 const { resolve } = require('path');
 const app = express();
+app.use(express.json());
 
 // If you need a backend, e.g. an API, add your custom backend-specific middleware here
-app.use('/display', displayRoutes);
+app.use('/display', itemsRoutes);
 
 // In production we need to pass these values in instead of relying on webpack
 setup(app, {
@@ -54,3 +55,5 @@ app.listen(port, host, async err => {
     logger.appStarted(port, prettyHost);
   }
 });
+
+module.exports = app;
