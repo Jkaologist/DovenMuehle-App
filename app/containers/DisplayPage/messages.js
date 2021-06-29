@@ -11,6 +11,6 @@ export const scope = 'app.containers.DisplayPage';
 export default defineMessages({
   header: {
     id: `${scope}.header`,
-    defaultMessage: 'This is the DisplayPage container!',
+    defaultMessage: 'Here are all of your strings!',
   },
 });

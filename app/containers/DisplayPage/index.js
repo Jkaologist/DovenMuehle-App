@@ -26,8 +26,8 @@ export function DisplayPage() {
   return (
     <div>
       <Helmet>
-        <title>DisplayPage</title>
-        <meta name="description" content="Description of DisplayPage" />
+        <title>String Display</title>
+        <meta name="String Display" content="Check Out These Strings" />
       </Helmet>
       <FormattedMessage {...messages.header} />
     </div>
