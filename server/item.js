@@ -19,7 +19,7 @@ class Item {
   /** Return items and adds new item in DB array. */
 
   static AddItem(name) {
-    db.items.push(name);
+    db.items.unshift(name);
     return db.items;
   }
 

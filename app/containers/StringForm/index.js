@@ -4,7 +4,7 @@
  *
  */
 
-import React, { memo } from 'react';
+import React, { memo, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
@@ -23,6 +23,20 @@ export function StringForm() {
   useInjectReducer({ key: 'stringForm', reducer });
   useInjectSaga({ key: 'stringForm', saga });
 
+  const [str, setStr] = useState({ str: '' });
+
+  function handleSubmit(e) {
+    // eslint-disable-next-line no-console
+    console.log(str);
+    e.preventDefault();
+  }
+
+  function handleChange(e) {
+    setStr({
+      [e.target.name]: e.target.value,
+    });
+  }
+
   return (
     <div>
       <Helmet>
@@ -30,6 +44,13 @@ export function StringForm() {
         <meta name="description" content="Description of StringForm" />
       </Helmet>
       <FormattedMessage {...messages.header} />
+      <p />
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="str">Enter a string: </label>
+        <input type="text" name="str" id="str" onChange={handleChange} />
+        <button type="button">Add string!</button>
+      </form>
+      <p />
     </div>
   );
 }

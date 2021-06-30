@@ -4,7 +4,7 @@
  *
  */
 import produce from 'immer';
-import { DEFAULT_ACTION } from './constants';
+import { GET_STRINGS } from './constants';
 
 export const initialState = {};
 
@@ -12,7 +12,7 @@ export const initialState = {};
 const displayPageReducer = (state = initialState, action) =>
   produce(state, (/* draft */) => {
     switch (action.type) {
-      case DEFAULT_ACTION:
+      case GET_STRINGS:
         break;
     }
   });

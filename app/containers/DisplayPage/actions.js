@@ -4,10 +4,10 @@
  *
  */
 
-import { DEFAULT_ACTION } from './constants';
+import { GET_STRINGS } from './constants';
 
-export function defaultAction() {
+export function getStrings() {
   return {
-    type: DEFAULT_ACTION,
+    type: GET_STRINGS,
   };
 }

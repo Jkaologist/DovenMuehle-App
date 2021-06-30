@@ -4,4 +4,4 @@
  *
  */
 
-export const DEFAULT_ACTION = 'app/DisplayPage/DEFAULT_ACTION';
+export const GET_STRINGS = 'app/DisplayPage/GET_STRINGS';
