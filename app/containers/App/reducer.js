@@ -49,15 +49,12 @@ const appReducer = (state = initialState, action) =>
         break;
 
       case LOAD_STRINGS:
-        return [...state.strings];
+        draft.strings = [...state.strings];
+        break;
 
       case ADD_STRING:
-        // Todo: Prepend a new string
         draft.strings = ['', ...state.strings];
-        return draft.strings;
-
-      default:
-        return state;
+        break;
     }
   });
 
