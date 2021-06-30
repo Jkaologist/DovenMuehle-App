@@ -78,15 +78,13 @@ export function loadStrings() {
 /**
  * Dispatched when the repositories are loaded by the request saga
  *
- * @param  {array} strings The strings data
  * @param  {string} newstr The new string
  *
- * @return {object}      An action object with a type of ADD_STRING passing the strings
+ * @return {object} An action object with a type of ADD_STRING passing the new string
  */
-export function addString(strings, newStr) {
+export function addString(newStr) {
   return {
     type: ADD_STRING,
-    strings,
     newStr,
   };
 }
