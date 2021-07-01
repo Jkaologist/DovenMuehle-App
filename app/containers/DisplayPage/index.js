@@ -19,7 +19,7 @@ import { makeSelectDisplayPage } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 import messages from './messages';
-import { getStrings } from './actions';
+import { loadStrings } from '../App/actions';
 
 export function DisplayPage({ getStringsList }) {
   useInjectReducer({ key: 'displayPage', reducer });
@@ -56,7 +56,7 @@ export function mapDispatchToProps(dispatch) {
   return {
     getStringsList: evt => {
       if (evt !== undefined && evt.preventDefault) evt.preventDefault();
-      dispatch(getStrings());
+      dispatch(loadStrings());
     },
   };
 }
