@@ -1,6 +1,6 @@
 /** Keep track of strings in DB cart. */
 
-const { NotFoundError } = require('./middlewares/expressErrorMiddleware');
+// const { NotFoundError } = require('./middlewares/expressErrorMiddleware');
 const db = require('./database');
 
 class Item {
@@ -8,7 +8,7 @@ class Item {
     this.name = name;
 
     // keep track of all items.
-    db.items.push(this);
+    db.items.unshift(this);
   }
 
   /** Return all items in DB array. */
@@ -18,7 +18,7 @@ class Item {
   }
   /** Return items and adds new item in DB array. */
 
-  static AddItem(name) {
+  static addItem(name) {
     db.items.unshift(name);
     return db.items;
   }
@@ -42,13 +42,10 @@ class Item {
   //   return foundItem;
   // }
 
-  /** Remove item with matching id. */
-
-  static remove(name) {
-    const foundIdx = db.items.findIndex(v => v.name === name);
-    if (foundIdx === -1) throw new NotFoundError();
-
-    db.items.splice(foundIdx, 1);
+  /** Remove first item if array not empty. */
+  static remove() {
+    db.items.shift();
+    return db.items;
   }
 }
 

@@ -57,6 +57,7 @@ export function StringForm() {
 
 StringForm.propTypes = {
   dispatch: PropTypes.func,
+  strings: PropTypes.array,
 };
 
 const mapStateToProps = createStructuredSelector({

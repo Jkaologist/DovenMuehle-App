@@ -2,7 +2,7 @@
 
 const express = require('express');
 const logger = require('./logger');
-const itemsRoutes = require('./routes/items');
+const items = require('./routes/items');
 const argv = require('./argv');
 const port = require('./port');
 const setup = require('./middlewares/frontendMiddleware');
@@ -16,7 +16,7 @@ const app = express();
 app.use(express.json());
 
 // If you need a backend, e.g. an API, add your custom backend-specific middleware here
-app.use('/display', itemsRoutes);
+app.use('/items', items);
 
 // In production we need to pass these values in instead of relying on webpack
 setup(app, {
