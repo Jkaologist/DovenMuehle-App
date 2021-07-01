@@ -41,7 +41,7 @@ const makeSelectLocation = () =>
 
 const makeSelectStrings = () =>
   createSelector(
-    selectRouter,
+    selectGlobal,
     globalState => globalState.strings,
   );
 

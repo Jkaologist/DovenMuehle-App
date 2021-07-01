@@ -50,11 +50,11 @@ const appReducer = (state = initialState, action) =>
         break;
 
       case LOAD_STRINGS:
-        draft.strings = [...state.strings];
+        draft.strings = action.strings;
         break;
 
       case ADD_STRING:
-        draft.strings = ['', ...state.strings];
+        draft.strings = [action.newStr, ...state.strings];
         break;
     }
   });

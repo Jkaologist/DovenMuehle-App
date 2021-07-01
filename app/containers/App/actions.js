@@ -71,9 +71,10 @@ export function repoLoadingError(error) {
  *
  * @return {object} An action object with a type of LOAD_STRINGS
  */
-export function loadStrings() {
+export function loadStrings(strings) {
   return {
     type: LOAD_STRINGS,
+    strings,
   };
 }
 

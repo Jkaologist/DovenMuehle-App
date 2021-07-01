@@ -4,7 +4,7 @@
  *
  */
 
-import React, { memo, useState, useEffect } from 'react';
+import React, { memo, useState, useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
@@ -20,15 +20,16 @@ import reducer from './reducer';
 import saga from './saga';
 import messages from './messages';
 import { loadStrings } from '../App/actions';
+import { StringsContext } from '../App/StringsContext';
 
-export function DisplayPage({ getStringsList }) {
+export function DisplayPage() {
   useInjectReducer({ key: 'displayPage', reducer });
   useInjectSaga({ key: 'displayPage', saga });
 
   const [items, setItems] = useState([]);
-
+  const { val, setVal } = useContext(StringsContext);
   useEffect(() => {
-    setItems(getStringsList());
+    setItems([...val]);
   });
 
   return (
@@ -40,6 +41,16 @@ export function DisplayPage({ getStringsList }) {
       <FormattedMessage {...messages.header} />
       <p />
       <List component={ListItem} items={items} />
+      <p />
+      <p />
+      <p />
+      <p />
+      <p />
+      <div>
+        <button type="button" onClick={() => setVal(val.splice(1))}>
+          Remove
+        </button>
+      </div>
     </div>
   );
 }
