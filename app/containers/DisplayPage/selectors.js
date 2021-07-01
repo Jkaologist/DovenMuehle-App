@@ -18,7 +18,7 @@ const selectDisplayPageDomain = state => state.displayPage || initialState;
 const makeSelectDisplayPage = () =>
   createSelector(
     selectDisplayPageDomain,
-    substate => substate,
+    displayState => displayState.strings,
   );
 
 export { selectDisplayPageDomain, makeSelectDisplayPage };

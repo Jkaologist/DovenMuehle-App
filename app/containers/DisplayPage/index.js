@@ -13,29 +13,23 @@ import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 import { useInjectSaga } from 'utils/injectSaga';
 import { useInjectReducer } from 'utils/injectReducer';
-import { GET_STRINGS } from './constants';
+import List from 'components/List';
+import ListItem from 'components/ListItem';
 import { makeSelectDisplayPage } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 import messages from './messages';
-import String from './string';
+import { getStrings } from './actions';
 
-export function DisplayPage() {
+export function DisplayPage({ getStringsList }) {
   useInjectReducer({ key: 'displayPage', reducer });
   useInjectSaga({ key: 'displayPage', saga });
 
-  const [strings] = useState(['turtles', 'pumpkins']);
+  const [items, setItems] = useState([]);
 
   useEffect(() => {
-    // Update the document title using the browser API
-    document.title = `You updated ${strings}!`;
+    setItems(getStringsList());
   });
-
-  // Map over strings array to display them in a list
-  const stringsDisplay = strings.map((str, idx) => (
-    // eslint-disable-next-line react/no-array-index-key
-    <String str={str} key={idx} />
-  ));
 
   return (
     <div>
@@ -45,14 +39,13 @@ export function DisplayPage() {
       </Helmet>
       <FormattedMessage {...messages.header} />
       <p />
-      <p />
-      <ul>{stringsDisplay}</ul>
+      <List component={ListItem} items={items} />
     </div>
   );
 }
 
 DisplayPage.propTypes = {
-  dispatch: PropTypes.func.isRequired,
+  getStringsList: PropTypes.func,
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -63,7 +56,7 @@ export function mapDispatchToProps(dispatch) {
   return {
     getStringsList: evt => {
       if (evt !== undefined && evt.preventDefault) evt.preventDefault();
-      dispatch(GET_STRINGS);
+      dispatch(getStrings());
     },
   };
 }
