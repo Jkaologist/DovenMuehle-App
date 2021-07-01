@@ -11,7 +11,7 @@ import { makeSelectDisplayPage } from 'containers/DisplayPage/selectors';
 export function* displayPageSaga() {
   // Select username from store
   const username = yield select(makeSelectDisplayPage());
-  const requestURL = `http://localhost:3000/display`;
+  const requestURL = `http://localhost:3000/items`;
 
   try {
     // Call our request helper (see 'utils/request')

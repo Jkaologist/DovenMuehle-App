@@ -1,4 +1,4 @@
-/** Keep track of strings in DB cart. */
+/** Keep track of strings in database array. */
 
 // const { NotFoundError } = require('./middlewares/expressErrorMiddleware');
 const db = require('./database');
@@ -22,25 +22,6 @@ class Item {
     db.items.unshift(name);
     return db.items;
   }
-
-  // /** Update found item with matching name to data. */
-
-  // static update(name, data) {
-  //   const foundItem = Item.find(name);
-  //   if (foundItem === undefined) throw new NotFoundError();
-
-  //   foundItem.name = data.name;
-
-  //   return foundItem;
-  // }
-
-  // /** Find & return item with matching name. */
-
-  // static find(name) {
-  //   const foundItem = items.find(v => v.name === name);
-  //   if (foundItem === undefined) throw new NotFoundError();
-  //   return foundItem;
-  // }
 
   /** Remove first item if array not empty. */
   static remove() {
