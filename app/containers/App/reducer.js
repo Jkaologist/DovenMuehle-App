@@ -25,6 +25,7 @@ export const initialState = {
     repositories: false,
   },
   strings: [],
+  id: 0,
 };
 
 /* eslint-disable default-case, no-param-reassign */

@@ -4,7 +4,7 @@
  *
  */
 
-import React, { memo } from 'react';
+import React, { memo, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
@@ -13,6 +13,7 @@ import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 import { useInjectSaga } from 'utils/injectSaga';
 import { useInjectReducer } from 'utils/injectReducer';
+import { LOAD_STRINGS } from 'containers/App/constants';
 import makeSelectDisplayPage from './selectors';
 import reducer from './reducer';
 import saga from './saga';
@@ -23,7 +24,17 @@ export function DisplayPage() {
   useInjectReducer({ key: 'displayPage', reducer });
   useInjectSaga({ key: 'displayPage', saga });
 
-  const stringsDisplay = [].map(str => <String str={str} />);
+  const [strings] = useState(['turtles', 'pumpkins']);
+
+  useEffect(() => {
+    // Update the document title using the browser API
+    document.title = `You updated ${strings}!`;
+  });
+
+  const stringsDisplay = strings.map((str, idx) => (
+    // eslint-disable-next-line react/no-array-index-key
+    <String str={str} key={idx} />
+  ));
 
   return (
     <div>
@@ -32,6 +43,8 @@ export function DisplayPage() {
         <meta name="String Display" content="Check Out These Strings" />
       </Helmet>
       <FormattedMessage {...messages.header} />
+      <p />
+      <p />
       <ul>{stringsDisplay}</ul>
     </div>
   );
@@ -39,15 +52,19 @@ export function DisplayPage() {
 
 DisplayPage.propTypes = {
   dispatch: PropTypes.func.isRequired,
+  string: PropTypes.string,
 };
 
 const mapStateToProps = createStructuredSelector({
   displayPage: makeSelectDisplayPage(),
 });
 
-function mapDispatchToProps(dispatch) {
+export function mapDispatchToProps(dispatch) {
   return {
-    dispatch,
+    onLoad: evt => {
+      if (evt !== undefined && evt.preventDefault) evt.preventDefault();
+      dispatch(LOAD_STRINGS());
+    },
   };
 }
 

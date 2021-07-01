@@ -1,9 +1,6 @@
 import React from 'react';
 
+// eslint-disable-next-line react/prop-types
 const String = ({ str }) => <li>{str}</li>;
-
-String.propTypes = {
-  str: String.propTypes.string,
-};
 
 export default String;
