@@ -21,6 +21,8 @@ import {
   LOAD_REPOS_ERROR,
   LOAD_STRINGS,
   ADD_STRING,
+  LOAD_STRINGS_ERROR,
+  LOAD_STRINGS_SUCCESS,
 } from './constants';
 
 /**
@@ -65,13 +67,43 @@ export function repoLoadingError(error) {
 }
 
 /**
- * Load the repositories, this action starts the request saga
+ * Load the srtings, this action starts the request saga
  *
  * @return {object} An action object with a type of LOAD_STRINGS
  */
 export function loadStrings() {
   return {
     type: LOAD_STRINGS,
+  };
+}
+
+/**
+ * Dispatched when the repositories are loaded by the request saga
+ *
+ * @param  {array} strings The repository data
+ * @param  {string} username The current username
+ *
+ * @return {object}      An action object with a type of LOAD_STRINGS_SUCCESS passing the repos
+ */
+export function stringsLoaded(strings, username) {
+  return {
+    type: LOAD_STRINGS_SUCCESS,
+    strings,
+    username,
+  };
+}
+
+/**
+ * Dispatched when loading the strings fails
+ *
+ * @param  {object} error The error
+ *
+ * @return {object}       An action object with a type of LOAD_STRINGS_ERROR passing the error
+ */
+export function stringsLoadingError(error) {
+  return {
+    type: LOAD_STRINGS_ERROR,
+    error,
   };
 }
 
