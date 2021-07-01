@@ -14,7 +14,7 @@ import { compose } from 'redux';
 
 import { useInjectSaga } from 'utils/injectSaga';
 import { useInjectReducer } from 'utils/injectReducer';
-import makeSelectStringForm from './selectors';
+import { makeSelectStringForm } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 import messages from './messages';
@@ -48,7 +48,7 @@ export function StringForm() {
       <form onSubmit={handleSubmit}>
         <label htmlFor="str">Enter a string: </label>
         <input type="text" name="str" id="str" onChange={handleChange} />
-        <button type="button">Add string!</button>
+        <button type="submit">Add string!</button>
       </form>
       <p />
     </div>

@@ -18,8 +18,7 @@ const selectStringFormDomain = state => state.stringForm || initialState;
 const makeSelectStringForm = () =>
   createSelector(
     selectStringFormDomain,
-    substate => substate,
+    substate => substate.strings,
   );
 
-export default makeSelectStringForm;
-export { selectStringFormDomain };
+export { selectStringFormDomain, makeSelectStringForm };

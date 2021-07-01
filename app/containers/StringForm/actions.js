@@ -12,10 +12,10 @@ export function getStrings() {
   };
 }
 
-export function addString(str) {
+export function addString(newStr) {
   return {
     type: ADD_STRING,
-    str,
+    newStr,
   };
 }
 

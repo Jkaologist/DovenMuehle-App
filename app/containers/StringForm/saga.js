@@ -6,7 +6,7 @@ import request from 'utils/request';
 import { makeSelectDisplayPage } from 'containers/DisplayPage/selectors';
 
 /**
- * Gets the strings of the from node/express server
+ * Make a post to prepend the strings from the form
  */
 export function* displayPageSaga() {
   // Select username from store

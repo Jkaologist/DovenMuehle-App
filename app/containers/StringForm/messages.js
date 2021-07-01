@@ -11,6 +11,6 @@ export const scope = 'app.containers.StringForm';
 export default defineMessages({
   header: {
     id: `${scope}.header`,
-    defaultMessage: 'Input your new string!',
+    defaultMessage: 'Prepend your new string!',
   },
 });

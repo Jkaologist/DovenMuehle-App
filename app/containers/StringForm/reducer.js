@@ -6,7 +6,7 @@
 import produce from 'immer';
 import { GET_STRINGS, REMOVE_STRING, ADD_STRING, RESET } from './constants';
 
-export const initialState = {};
+export const initialState = { strings: [], id: 0 };
 const newStr = '';
 
 /* eslint-disable default-case, no-param-reassign */
@@ -19,7 +19,7 @@ const stringFormReducer = (state = initialState, action) =>
         draft.strings.filter(val => val.id !== action.id);
         break;
       case ADD_STRING:
-        draft.strings.push(newStr);
+        draft.strings.unshift(newStr);
         break;
       case RESET:
         draft.strings = [];
