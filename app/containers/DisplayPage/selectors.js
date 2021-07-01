@@ -21,5 +21,4 @@ const makeSelectDisplayPage = () =>
     substate => substate,
   );
 
-export default makeSelectDisplayPage;
-export { selectDisplayPageDomain };
+export { selectDisplayPageDomain, makeSelectDisplayPage };

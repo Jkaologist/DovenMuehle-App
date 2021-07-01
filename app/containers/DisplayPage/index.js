@@ -13,8 +13,8 @@ import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 import { useInjectSaga } from 'utils/injectSaga';
 import { useInjectReducer } from 'utils/injectReducer';
-import { LOAD_STRINGS } from 'containers/App/constants';
-import makeSelectDisplayPage from './selectors';
+import { GET_STRINGS } from './constants';
+import { makeSelectDisplayPage } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 import messages from './messages';
@@ -31,6 +31,7 @@ export function DisplayPage() {
     document.title = `You updated ${strings}!`;
   });
 
+  // Map over strings array to display them in a list
   const stringsDisplay = strings.map((str, idx) => (
     // eslint-disable-next-line react/no-array-index-key
     <String str={str} key={idx} />
@@ -52,7 +53,6 @@ export function DisplayPage() {
 
 DisplayPage.propTypes = {
   dispatch: PropTypes.func.isRequired,
-  string: PropTypes.string,
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -61,9 +61,9 @@ const mapStateToProps = createStructuredSelector({
 
 export function mapDispatchToProps(dispatch) {
   return {
-    onLoad: evt => {
+    getStringsList: evt => {
       if (evt !== undefined && evt.preventDefault) evt.preventDefault();
-      dispatch(LOAD_STRINGS());
+      dispatch(GET_STRINGS);
     },
   };
 }

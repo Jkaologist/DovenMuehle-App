@@ -26,6 +26,8 @@ export function StringForm() {
   const [str, setStr] = useState({ str: '' });
 
   function handleSubmit(e) {
+    // eslint-disable-next-line no-console
+    console.log(str);
     e.preventDefault();
   }
 

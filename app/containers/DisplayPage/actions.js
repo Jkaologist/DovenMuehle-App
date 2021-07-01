@@ -6,10 +6,9 @@
 
 import { GET_STRINGS, REMOVE_STRING, RESET } from './constants';
 
-export function getStrings(str) {
+export function getStrings() {
   return {
     type: GET_STRINGS,
-    str,
   };
 }
 
